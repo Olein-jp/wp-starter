@@ -44,7 +44,7 @@ gulp.task( 'images', function(){
             optimizationLevel: 7,
             progressive: true
         }))
-        .pipe(gulp.dest( './images/dist' ));
+        .pipe(gulp.dest( './images/' ));
 })
 
 // concat js file(s)
