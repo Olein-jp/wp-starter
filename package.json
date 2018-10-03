@@ -1,8 +1,8 @@
 {
   "name": "wp-starter",
   "version": "1.0.0",
-  "description": "[![Build Status](https://travis-ci.org/Automattic/_s.svg?branch=master)](https://travis-ci.org/Automattic/_s)",
-  "main": "index.js",
+  "description": "",
+  "main": "index.php",
   "dependencies": {},
   "devDependencies": {
     "browser-sync": "^2.24.7",
@@ -23,14 +23,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Olein-jp/wp-starter.git"
-  },
+  "repository": {},
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Olein-jp/wp-starter/issues"
-  },
-  "homepage": "https://github.com/Olein-jp/wp-starter#readme"
+  "license": "ISC"
 }
