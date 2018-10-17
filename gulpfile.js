@@ -15,6 +15,9 @@ var rename       = require( 'gulp-rename' );
 var uglify       = require( 'gulp-uglify' );
 var browserSync  = require( 'browser-sync' );
 
+var rtlcss       = require( 'gulp-rtlcss' );
+var reload       = browserSync.reload;
+
 // Sass
 gulp.task( 'sass', function(){
     gulp.src( './src/assets/sass/**/*.scss' )
@@ -28,7 +31,20 @@ gulp.task( 'sass', function(){
             cascade: false
         } ) )
         .pipe( sourcemaps.write( './' ) )
-        .pipe( gulp.dest( './css/'))
+        .pipe( gulp.dest( './' ) );
+} );
+
+// create rtl.css
+gulp.task( 'rtl', function() {
+    gulp.src( './style.css' )
+        .pipe( plumber() )
+        .pipe( sourcemaps.init() )
+        .pipe( rtlcss() )
+        .pipe( rename({
+            basename: 'rtl'
+        }))
+        .pipe( sourcemaps.write( './' ) )
+        .pipe(gulp.dest( './' ) );
 } );
 
 // imagemin
@@ -74,27 +90,16 @@ gulp.task( 'js.compress', function() {
         .pipe( gulp.dest( './js' ) );
 } );
 
-// Browser Sync
-gulp.task('bs', function() {
-    browserSync({
-        server: {
-            baseDir: "./",
-            index: "index.html"
-        }
+// watch
+gulp.task( 'watch', function(){
+    browserSync.init({
+        files: [ './**/*.php' ],
+        proxy: 'http://gulpdev.wordpress' // Change to your Local WP URL
     });
+    gulp.watch( './src/assets/sass/**/*.scss', ['sass', 'rtl', reload ]);
+    gulp.watch( './src/assets/images/*', [ 'imagemin', reload ] );
+    gulp.watch( './src/assets/js/**/*.js', [ 'js.concat', 'js.compress', reload ]);
 });
 
-// Reload Browser
-gulp.task( 'bs-reload', function() {
-    browserSync.reload();
-});
-
-//
-// Default task
-//
-gulp.task( 'default', [ 'bs', 'sass', 'js.concat', 'js.compress', 'imagemin' ], function() {
-    gulp.watch("./**/*.html", ['bs-reload']);
-    gulp.watch("./src/assets/sass/**/*.scss", [ 'sass', 'bs-reload' ]);
-    gulp.watch("./src/assets/js/*.js", [ 'js.concat', 'js.compress', 'bs-reload' ]);
-    gulp.watch("./src/assets/image/*", [ 'imagemin', 'bs-reload' ]);
-});
+// default task
+gulp.task( 'default', [ 'watch' ] );
