@@ -11,7 +11,7 @@
 詳しくは`gulpfile.js`を読んで下さい。また、こちらのセットを作る方法を書いたブログ記事もあるので、そちらも読んでもらうとわかりやすいかもしれません。
 
 - [いまさら始めるgulp入門](https://olein-design.com/blog/gulp-starter)
-- [いまさらGulpでWordPressテーマ開発環境を作ってみる]( https://olein-design.com/blog/gulp-wp-starter)
+- [いまさら始めるGulpでWordPressテーマ開発]( https://olein-design.com/blog/gulp-wp-starter)
 
 ## 使用プラグイン
 - browser-sync
