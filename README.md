@@ -22,6 +22,7 @@
 - gulp-imagemin
 - gulp-jshint
 - gulp-plumber
+- gulp-progeny
 - gulp-rename
 - gulp-rtlcss
 - gulp-sass
