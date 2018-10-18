@@ -2,6 +2,7 @@ var gulp         = require( 'gulp' );
 var sass         = require( 'gulp-sass' );
 var autoprefixer = require( 'gulp-autoprefixer' );
 var plumber      = require( 'gulp-plumber' );
+var progeny      = require( 'gulp-progeny' );
 var sourcemaps   = require( 'gulp-sourcemaps' );
 var changed      = require( 'gulp-changed' );
 var imagemin     = require( 'gulp-imagemin' );
@@ -22,6 +23,7 @@ var reload       = browserSync.reload;
 gulp.task( 'sass', function(){
     gulp.src( './src/assets/sass/**/*.scss' )
         .pipe( plumber() )
+        .pipe( progeny() )
         .pipe( sourcemaps.init() )
         .pipe( sass( {
             outputStyle: 'expanded'
