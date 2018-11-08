@@ -92,6 +92,11 @@ gulp.task( 'js.compress', function() {
         .pipe( gulp.dest( './js' ) );
 } );
 
+// copy library in node_modules to dist directory
+gulp.task( 'copylib', function() {
+    gulp.src('node_modules/[PACKAGE_NAME]').pipe(gulp.dest( './src/lib/[DIR_NAME]' ) );
+} );
+
 // watch
 gulp.task( 'watch', function(){
     browserSync.init({
@@ -99,8 +104,8 @@ gulp.task( 'watch', function(){
         proxy: 'http://gulpdev.wordpress' // Change to your Local WP URL
     });
     gulp.watch( './src/assets/sass/**/*.scss', ['sass', 'rtl', reload ]);
-    gulp.watch( './src/assets/images/*', [ 'imagemin', reload ] );
-    gulp.watch( './src/assets/js/**/*.js', [ 'js.concat', 'js.compress', reload ]);
+    gulp.watch( './src/assets/images/**/*', [ 'imagemin', reload ] );
+    gulp.watch( './src/assets/js/**/*', [ 'js.concat', 'js.compress', reload ]);
 });
 
 // default task
