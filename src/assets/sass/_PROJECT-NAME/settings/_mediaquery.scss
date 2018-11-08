@@ -1,0 +1,40 @@
+//======================================================================
+// Breakpoint
+//======================================================================
+$breakpoint-up: (
+        'tb' : 'screen and (min-width: 480px)',
+        'spc': 'screen and (min-width: 768px)',
+        'mpc': 'screen and (min-width: 992px)',
+        'lpc': 'screen and (min-width: 1200px)',
+) !default;
+
+$breakpoint-down: (
+        'sp' : 'screen and (max-width: 479px)',
+        'tb' : 'screen and (max-width: 767px)',
+        'spc': 'screen and (max-width: 991px)',
+        'mpc': 'screen and (max-width: 1199px)',
+) !default;
+
+//
+// It's means sign below
+// -------------------------
+// sp      0 - 479  : smart phone 
+// tb    480 - 767  : tablet
+// spc   768 - 991  : SMALL personal computer
+// mpc   992 - 1199 : MEDIUM personal computer
+// lpc  1200 -      : LARGE personal computer
+// -------------------------
+//
+
+
+@mixin mq-up($breakpoint: tb) {
+  @media #{map-get($breakpoint-up, $breakpoint)}{
+    @content;
+  }
+}
+
+@mixin mq-down($breakpoint: pc) {
+  @media #{map-get($breakpoint-down, $breakpoint)}{
+    @content;
+  }
+}
